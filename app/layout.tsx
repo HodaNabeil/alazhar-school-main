@@ -73,7 +73,7 @@ const notoSerif = Noto_Serif({
 export const metadata: Metadata = {
   metadataBase: new URL((process.env.NEXT_PUBLIC_SITE_URL && process.env.NEXT_PUBLIC_SITE_URL.startsWith('http')) ? process.env.NEXT_PUBLIC_SITE_URL : 'http://localhost:3000'),
   title: {
-    default: "Al-Azhar School - Learn Quran & Arabic Online",
+    default: "Online Quran classes | Learn Quran with Tajweed | Al-Azhar School",
     template: "%s | Al-Azhar School"
   },
   description: "Learn the Holy Quran from Al-Azhar scholars anywhere in the world. Online Quran memorization, Arabic language, and Islamic studies courses.",
