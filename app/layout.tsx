@@ -102,7 +102,7 @@ export const metadata: Metadata = {
     siteName: 'Al-Azhar School',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/5785012981833253635-removebg-preview.png',
         width: 1200,
         height: 630,
         alt: 'Al-Azhar School - Islamic Education',
