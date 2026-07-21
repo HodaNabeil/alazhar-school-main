@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
+import { LOGO_PATH } from '@/lib/seo'
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -40,8 +41,8 @@ const Navigation = React.memo(function Navigation() {
             <div className="flex items-center space-x-1 sm:space-x-2">
               <div className="logo-container flex items-center justify-center transition-all duration-300 group-hover:scale-110 min-w-[48px] sm:min-w-[64px] md:min-w-[72px]">
                 <Image
-                  src="/logo.png?v=8"
-                  alt="Al-Azhar School Logo"
+                  src={LOGO_PATH}
+                  alt="Al-Azhar School"
                   width={80}
                   height={80}
                   className="h-10 sm:h-12 md:h-14 w-auto object-contain"

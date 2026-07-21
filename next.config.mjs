@@ -75,6 +75,25 @@ const nextConfig = {
           },
         ],
       },
+      {
+        source: '/:path*\\.(jpg|jpeg|png|gif|webp|avif|ico|svg)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ]
+  },
+
+  async redirects() {
+    return [
+      {
+        source: '/blog',
+        destination: '/blog/articles',
+        permanent: true,
+      },
     ]
   },
   

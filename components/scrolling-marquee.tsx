@@ -32,7 +32,7 @@ export default function ScrollingMarquee() {
                 className="flex items-center text-xs sm:text-sm md:text-base lg:text-lg font-bold px-1 sm:px-2 md:px-4 whitespace-nowrap gap-1 sm:gap-2"
                 style={{ fontFamily: 'Noto Serif', color: '#5a2600', textShadow: '1px 1px 4px #fff' }}
               >
-                <Image src="/LOGOMMM.png" alt="logo" width={44} height={44} className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 inline-block" style={{ marginRight: '10px', verticalAlign: 'middle' }} />
+                <Image src="/logo/image.png" alt="Al-Azhar School" width={44} height={44} className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 inline-block" style={{ marginRight: '10px', verticalAlign: 'middle' }} />
                 {item}
                 {idx !== marqueeItems.length - 1 && (
                   <span className="mx-1 sm:mx-2 text-[#5a2600]">{idx % 2 === 0 ? '>' : '<'}</span>
@@ -46,7 +46,7 @@ export default function ScrollingMarquee() {
                 className="flex items-center text-xs sm:text-sm md:text-base lg:text-lg font-bold px-1 sm:px-2 md:px-4 whitespace-nowrap gap-1 sm:gap-2"
                 style={{ fontFamily: 'Noto Serif', color: '#5a2600', textShadow: '1px 1px 4px #fff' }}
               >
-                <Image src="/LOGOMMM.png" alt="logo" width={44} height={44} className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 inline-block" style={{ marginRight: '10px', verticalAlign: 'middle' }} />
+                <Image src="/logo/image.png" alt="Al-Azhar School" width={44} height={44} className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 inline-block" style={{ marginRight: '10px', verticalAlign: 'middle' }} />
                 {item}
                 {idx !== marqueeItems.length - 1 && (
                   <span className="mx-1 sm:mx-2 text-[#5a2600]">{idx % 2 === 0 ? '>' : '<'}</span>

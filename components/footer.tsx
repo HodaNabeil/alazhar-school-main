@@ -31,8 +31,8 @@ export default function Footer() {
               <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
                 <div className="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/LOGOMMM.png"
-                    alt="Al-Azhar School Logo"
+                    src="/logo/image.png"
+                    alt="Al-Azhar School"
                     width={64}
                     height={64}
                     className="w-full h-full object-cover"

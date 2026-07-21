@@ -1,87 +1,62 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Noto_Sans_Arabic, Noto_Serif } from "next/font/google"
-import "./globals.css"
-import Navigation from "@/components/navigation"
-import Footer from "@/components/footer"
-import FloatingChatButton from "@/components/floating-chat-button"
-import { UserProvider } from "@/contexts/UserContext"
-import ErrorBoundary from "@/components/error-boundary"
+import type React from 'react'
+import type { Metadata, Viewport } from 'next'
+import { Noto_Sans_Arabic, Noto_Serif } from 'next/font/google'
+import './globals.css'
+import Navigation from '@/components/navigation'
+import Footer from '@/components/footer'
+import FloatingChatButton from '@/components/floating-chat-button'
+import { UserProvider } from '@/contexts/UserContext'
+import ErrorBoundary from '@/components/error-boundary'
 import { Analytics } from '@vercel/analytics/react'
-import StructuredData from "@/components/structured-data"
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return (
-    <html lang="en">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#e8b007" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Al-Azhar School" />
-        <link rel="apple-touch-icon" href="/icon-192x192.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="icon" href="/favicon.ico" />
-      </head>
-      <body className={`${notoSansArabic.variable} ${notoSerif.variable} ${notoSansArabic.className}`} suppressHydrationWarning={true}>
-        <ErrorBoundary>
-          <UserProvider>
-            <Navigation />
-            <main>{children}</main>
-            <Footer />
-            <FloatingChatButton />
-          </UserProvider>
-        </ErrorBoundary>
-        <Analytics />
-        <StructuredData 
-          type="organization" 
-          data={{
-            name: "Al-Azhar School",
-            description: "Learn the Holy Quran from Al-Azhar scholars anywhere in the world."
-          }} 
-        />
-      </body>
-    </html>
-  )
-}
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import { GoogleAnalytics } from '@/components/google-analytics'
+import { JsonLd, organizationSchema, websiteSchema } from '@/lib/structured-data'
+import { SITE_URL, DEFAULT_OG_IMAGE, SITE_NAME } from '@/lib/seo'
 
 const notoSansArabic = Noto_Sans_Arabic({
-  subsets: ["arabic"],
-  weight: ["400", "700", "900"],
-  display: "swap",
+  subsets: ['arabic'],
+  weight: ['400', '700', '900'],
+  display: 'swap',
   preload: true,
-  fallback: ["system-ui", "arial"],
-  variable: "--font-noto-sans-arabic"
+  fallback: ['system-ui', 'arial'],
+  variable: '--font-noto-sans-arabic',
 })
 
 const notoSerif = Noto_Serif({
-  subsets: ["latin"],
-  weight: ["400", "700", "900"],
-  display: "swap",
+  subsets: ['latin'],
+  weight: ['400', '700', '900'],
+  display: 'swap',
   preload: true,
-  fallback: ["Georgia", "serif"],
-  variable: "--font-noto-serif"
+  fallback: ['Georgia', 'serif'],
+  variable: '--font-noto-serif',
 })
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#e8b007',
+}
+
 export const metadata: Metadata = {
-  metadataBase: new URL((process.env.NEXT_PUBLIC_SITE_URL && process.env.NEXT_PUBLIC_SITE_URL.startsWith('http')) ? process.env.NEXT_PUBLIC_SITE_URL : 'http://localhost:3000'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Online Quran classes | Learn Quran with Tajweed | Al-Azhar School",
-    template: "%s | Al-Azhar School"
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
   },
-  description: "Learn the Holy Quran from Al-Azhar scholars anywhere in the world. Online Quran memorization, Arabic language, and Islamic studies courses.",
-  keywords: ["Quran", "Arabic", "Islamic Studies", "Online Learning", "Al-Azhar", "Quran Memorization", "Islamic Education"],
-  authors: [{ name: "Al-Azhar School" }],
-  creator: "Al-Azhar School",
-  publisher: "Al-Azhar School",
-  generator: 'Next.js',
+  description:
+    'Learn the Holy Quran from Al-Azhar scholars anywhere in the world. Online Quran memorization, Arabic language, and Islamic studies courses.',
+  keywords: [
+    'Quran',
+    'Arabic',
+    'Islamic Studies',
+    'Online Learning',
+    'Al-Azhar',
+    'Quran Memorization',
+    'Islamic Education',
+  ],
+  authors: [{ name: 'Al-Azhar School' }],
+  creator: 'Al-Azhar School',
+  publisher: 'Al-Azhar School',
   robots: {
     index: true,
     follow: true,
@@ -96,13 +71,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: (process.env.NEXT_PUBLIC_SITE_URL && process.env.NEXT_PUBLIC_SITE_URL.startsWith('http')) ? process.env.NEXT_PUBLIC_SITE_URL : 'https://alazharschool.com',
+    url: SITE_URL,
     title: 'Al-Azhar School - Learn Quran & Arabic Online',
-    description: 'Learn the Holy Quran from Al-Azhar scholars anywhere in the world. Online Quran memorization, Arabic language, and Islamic studies courses.',
+    description:
+      'Learn the Holy Quran from Al-Azhar scholars anywhere in the world. Online Quran memorization, Arabic language, and Islamic studies courses.',
     siteName: 'Al-Azhar School',
     images: [
       {
-        url: '/5785012981833253635-removebg-preview.png',
+        url: DEFAULT_OG_IMAGE,
         width: 1200,
         height: 630,
         alt: 'Al-Azhar School - Islamic Education',
@@ -112,16 +88,66 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Al-Azhar School - Learn Quran & Arabic Online',
-    description: 'Learn the Holy Quran from Al-Azhar scholars anywhere in the world.',
-    images: ['/og-image.jpg'],
+    description:
+      'Learn the Holy Quran from Al-Azhar scholars anywhere in the world.',
+    images: [DEFAULT_OG_IMAGE],
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GA_ID,
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION,
   },
   alternates: {
-    canonical: (process.env.NEXT_PUBLIC_SITE_URL && process.env.NEXT_PUBLIC_SITE_URL.startsWith('http')) ? process.env.NEXT_PUBLIC_SITE_URL : 'https://alazharschool.com',
+    canonical: SITE_URL,
   },
   category: 'Education',
   classification: 'Islamic Education',
   referrer: 'origin-when-cross-origin',
+  manifest: '/manifest.json',
+  icons: {
+    icon: [
+      { url: '/logo/image.png', type: 'image/png' },
+      { url: '/logo/image.png', sizes: '32x32', type: 'image/png' },
+      { url: '/logo/image.png', sizes: '16x16', type: 'image/png' },
+    ],
+    shortcut: '/logo/image.png',
+    apple: '/logo/image.png',
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Al-Azhar School',
+  },
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body
+        className={`${notoSansArabic.variable} ${notoSerif.variable} ${notoSansArabic.className}`}
+        suppressHydrationWarning
+      >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:rounded-md focus:shadow-lg focus:text-[#5a2600]"
+        >
+          Skip to main content
+        </a>
+        <ErrorBoundary>
+          <UserProvider>
+            <Navigation />
+            <main id="main-content">{children}</main>
+            <Footer />
+            <FloatingChatButton />
+          </UserProvider>
+        </ErrorBoundary>
+        <Analytics />
+        <SpeedInsights />
+        <GoogleAnalytics />
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
+      </body>
+    </html>
+  )
 }

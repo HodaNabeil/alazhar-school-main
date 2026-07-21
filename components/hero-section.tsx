@@ -1,5 +1,6 @@
 "use client"
 
+import { LOGO_PATH } from '@/lib/seo'
 import { Facebook, Instagram, Youtube, Linkedin, Twitter } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -155,8 +156,8 @@ export default function HeroSection() {
             {/* Right Side - Logo + Learn Quran Online + Divider */}
             <div className="flex flex-col items-center justify-center order-first lg:order-last animate-hero-fadein w-full mt-2 sm:mt-0">
                 <Image
-                  src="/alazhar-logo.png"
-                alt="Al-Azhar School Logo"
+                  src={LOGO_PATH}
+                alt="Al-Azhar School"
                 width={520}
                 height={270}
                   className="hero-logo w-40 sm:w-[220px] md:w-[320px] lg:w-[420px] xl:w-[520px] max-w-full h-auto object-contain"

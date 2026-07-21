@@ -18,7 +18,7 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <html>
+    <html lang="en">
       <body>
         <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100 flex items-center justify-center p-4">
           <Card className="enhanced-card rounded-2xl shadow-lg max-w-md w-full">
